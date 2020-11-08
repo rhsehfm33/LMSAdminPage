@@ -8,12 +8,13 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"user"})
+@ToString(exclude = {"user", "orderDetailList"})
 public class OrderGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,5 +37,7 @@ public class OrderGroup {
     @ManyToOne
     private User user;
 
-
+    // OrderGroup : OrderDetail = 1 : N
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "orderGroup")
+    private List<OrderDetail> orderDetailList;
 }
