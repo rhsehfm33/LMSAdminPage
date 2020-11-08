@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"itemList"})
+@ToString(exclude = {"itemList", "category"})
 public class Partner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +31,10 @@ public class Partner {
     private String createdBy;
     private LocalDateTime updatedAt;
     private String updatedBy;
-    private Long categoryId;
+
+    // Partner : Category = N : 1
+    @ManyToOne
+    private Category category;
 
     // Partner : Item = 1 : N
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "partner")
