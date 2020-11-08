@@ -3,17 +3,17 @@ package com.example.study.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = {"orderDetailList", "partner"})
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,5 +30,12 @@ public class Item {
     private String createdBy;
     private LocalDateTime updatedAt;
     private String updatedBy;
-    private Long partnerId;
+
+    // Item : Partner = N : 1
+    @ManyToOne
+    private Partner partner;
+
+    // Item : OrderDetail = 1 : N
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
+    List<OrderDetail> orderDetailList;
 }
