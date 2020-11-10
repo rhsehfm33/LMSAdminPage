@@ -18,7 +18,7 @@ public class CategoryApiController implements CrudInterface<CategoryApiRequest, 
     @PostMapping("")
     @Override
     public Header<CategoryApiResponse> create(@RequestBody Header<CategoryApiRequest> request) {
-        return null;
+        return categoryApiLogicService.create(request);
     }
 
     @GetMapping("{id}")

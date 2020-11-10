@@ -17,7 +17,17 @@ public class CategoryApiLogicService implements CrudInterface<CategoryApiRequest
 
     @Override
     public Header<CategoryApiResponse> create(Header<CategoryApiRequest> request) {
-        return null;
+
+        CategoryApiRequest body = request.getData();
+
+        Category category = Category.builder()
+                .type(body.getType())
+                .title(body.getTitle())
+                .build();
+
+        Category newCategory = categoryRepository.save(category);
+
+        return response(newCategory);
     }
 
     @Override
