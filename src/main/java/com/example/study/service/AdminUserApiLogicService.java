@@ -38,7 +38,9 @@ public class AdminUserApiLogicService implements CrudInterface<AdminUserApiReque
 
     @Override
     public Header<AdminUserApiResponse> read(Long id) {
-        return null;
+        return adminUserRepository.findById(id)
+                .map(this::response)
+                .orElseGet(() -> Header.ERROR("데이터 없음"));
     }
 
     @Override
