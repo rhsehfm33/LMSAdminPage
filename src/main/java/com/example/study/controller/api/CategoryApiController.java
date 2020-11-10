@@ -36,6 +36,6 @@ public class CategoryApiController implements CrudInterface<CategoryApiRequest, 
     @DeleteMapping("{id}")
     @Override
     public Header delete(@PathVariable Long id) {
-        return null;
+        return categoryApiLogicService.delete(id);
     }
 }
