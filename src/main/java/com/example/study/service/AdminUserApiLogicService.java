@@ -2,6 +2,7 @@ package com.example.study.service;
 
 import com.example.study.ifs.CrudInterface;
 import com.example.study.model.entity.AdminUser;
+import com.example.study.model.enumclass.AdminUserStatus;
 import com.example.study.model.network.Header;
 import com.example.study.model.network.request.AdminUserApiRequest;
 import com.example.study.model.network.response.AdminUserApiResponse;
@@ -25,7 +26,7 @@ public class AdminUserApiLogicService implements CrudInterface<AdminUserApiReque
         AdminUser adminUser = AdminUser.builder()
                 .account(body.getAccount())
                 .password(body.getPassword())
-                .status("REGISTERED")
+                .status(AdminUserStatus.REGISTERED)
                 .role(body.getRole())
                 .loginFailCount(0)
                 .registeredAt(LocalDateTime.now())
