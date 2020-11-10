@@ -30,7 +30,7 @@ public class CategoryApiController implements CrudInterface<CategoryApiRequest, 
     @PutMapping("")
     @Override
     public Header<CategoryApiResponse> update(@RequestBody Header<CategoryApiRequest> request) {
-        return null;
+        return categoryApiLogicService.update(request);
     }
 
     @DeleteMapping("{id}")
