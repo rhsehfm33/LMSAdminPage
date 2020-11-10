@@ -46,6 +46,7 @@ public class OrderDetailApiLogicService implements CrudInterface<OrderDetailApiR
     public Header response(OrderDetail orderDetail) {
 
         OrderDetailApiResponse body = OrderDetailApiResponse.builder()
+                .id(orderDetail.getId())
                 .status(orderDetail.getStatus())
                 .arrivalDate(orderDetail.getArrivalDate())
                 .quantity(orderDetail.getQuantity())
