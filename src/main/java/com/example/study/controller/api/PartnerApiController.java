@@ -1,41 +1,24 @@
 package com.example.study.controller.api;
 
-import com.example.study.ifs.CrudInterface;
-import com.example.study.model.network.Header;
+import com.example.study.controller.CrudController;
 import com.example.study.model.network.request.PartnerApiRequest;
 import com.example.study.model.network.response.PartnerApiResponse;
 import com.example.study.service.PartnerApiLogicService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.PostConstruct;
 
 @RestController
 @RequestMapping("/api/partner")
-public class PartnerApiController implements CrudInterface<PartnerApiRequest, PartnerApiResponse> {
+public class PartnerApiController extends CrudController<PartnerApiRequest, PartnerApiResponse> {
 
     @Autowired
     PartnerApiLogicService partnerApiLogicService;
 
-    @PostMapping("")
-    @Override
-    public Header<PartnerApiResponse> create(@RequestBody Header<PartnerApiRequest> request) {
-        return partnerApiLogicService.create(request);
-    }
-
-    @GetMapping("{id}")
-    @Override
-    public Header<PartnerApiResponse> read(@PathVariable Long id) {
-        return partnerApiLogicService.read(id);
-    }
-
-    @PutMapping("")
-    @Override
-    public Header<PartnerApiResponse> update(@RequestBody Header<PartnerApiRequest> request) {
-        return partnerApiLogicService.update(request);
-    }
-
-    @DeleteMapping("{id}")
-    @Override
-    public Header delete(@PathVariable Long id) {
-        return partnerApiLogicService.delete(id);
+    @PostConstruct
+    public void init() {
+        this.baseService = partnerApiLogicService;
     }
 }
