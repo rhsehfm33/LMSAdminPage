@@ -36,6 +36,6 @@ public class PartnerApiController implements CrudInterface<PartnerApiRequest, Pa
     @DeleteMapping("{id}")
     @Override
     public Header delete(@PathVariable Long id) {
-        return null;
+        return partnerApiLogicService.delete(id);
     }
 }
