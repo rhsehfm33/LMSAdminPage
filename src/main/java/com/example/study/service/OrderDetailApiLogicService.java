@@ -82,7 +82,7 @@ public class OrderDetailApiLogicService implements CrudInterface<OrderDetailApiR
                 .orElseGet(() -> Header.ERROR("데이터 없음"));
     }
 
-    public Header<OrderDetailApiResponse> response(OrderDetail orderDetail) {
+    private Header<OrderDetailApiResponse> response(OrderDetail orderDetail) {
 
         OrderDetailApiResponse body = OrderDetailApiResponse.builder()
                 .id(orderDetail.getId())
