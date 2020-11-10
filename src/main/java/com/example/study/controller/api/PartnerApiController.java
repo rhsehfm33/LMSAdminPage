@@ -18,7 +18,7 @@ public class PartnerApiController implements CrudInterface<PartnerApiRequest, Pa
     @PostMapping("")
     @Override
     public Header<PartnerApiResponse> create(@RequestBody Header<PartnerApiRequest> request) {
-        return null;
+        return partnerApiLogicService.create(request);
     }
 
     @GetMapping("{id}")

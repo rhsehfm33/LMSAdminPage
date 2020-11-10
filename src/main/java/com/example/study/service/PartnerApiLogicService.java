@@ -5,9 +5,12 @@ import com.example.study.model.entity.Partner;
 import com.example.study.model.network.Header;
 import com.example.study.model.network.request.PartnerApiRequest;
 import com.example.study.model.network.response.PartnerApiResponse;
+import com.example.study.repository.CategoryRepository;
 import com.example.study.repository.PartnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 public class PartnerApiLogicService implements CrudInterface<PartnerApiRequest, PartnerApiResponse> {
@@ -15,9 +18,29 @@ public class PartnerApiLogicService implements CrudInterface<PartnerApiRequest, 
     @Autowired
     PartnerRepository partnerRepository;
 
+    @Autowired
+    CategoryRepository categoryRepository;
+
     @Override
     public Header<PartnerApiResponse> create(Header<PartnerApiRequest> request) {
-        return null;
+
+        PartnerApiRequest body = request.getData();
+
+        Partner partner = Partner.builder()
+                .name(body.getName())
+                .status(body.getStatus())
+                .address(body.getAddress())
+                .callCenter(body.getCallCenter())
+                .partnerNumber(body.getPartnerNumber())
+                .businessNumber(body.getBusinessNumber())
+                .ceoName(body.getCeoName())
+                .registeredAt(LocalDateTime.now())
+                .category(categoryRepository.getOne(body.getCategoryId()))
+                .build();
+
+        Partner newPartner = partnerRepository.save(partner);
+
+        return response(newPartner);
     }
 
     @Override
