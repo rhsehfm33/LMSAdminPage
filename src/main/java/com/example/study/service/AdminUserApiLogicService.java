@@ -71,7 +71,12 @@ public class AdminUserApiLogicService implements CrudInterface<AdminUserApiReque
 
     @Override
     public Header delete(Long id) {
-        return null;
+        return adminUserRepository.findById(id)
+                .map(adminUser -> {
+                    adminUserRepository.delete(adminUser);
+                    return Header.OK();
+                })
+                .orElseGet(() -> Header.ERROR("데이터 없음"));
     }
 
     private Header<AdminUserApiResponse> response(AdminUser adminUser) {

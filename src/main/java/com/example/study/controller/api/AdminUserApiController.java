@@ -36,6 +36,6 @@ public class AdminUserApiController implements CrudInterface<AdminUserApiRequest
     @DeleteMapping("{id}")
     @Override
     public Header delete(@PathVariable Long id) {
-        return null;
+        return adminUserApiLogicService.delete(id);
     }
 }
