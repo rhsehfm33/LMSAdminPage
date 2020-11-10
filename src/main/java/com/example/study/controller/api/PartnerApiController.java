@@ -24,7 +24,7 @@ public class PartnerApiController implements CrudInterface<PartnerApiRequest, Pa
     @GetMapping("{id}")
     @Override
     public Header<PartnerApiResponse> read(@PathVariable Long id) {
-        return null;
+        return partnerApiLogicService.read(id);
     }
 
     @PutMapping("")
