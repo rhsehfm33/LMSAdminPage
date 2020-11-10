@@ -62,6 +62,7 @@ public class PartnerApiLogicService implements CrudInterface<PartnerApiRequest, 
 
         PartnerApiResponse body = PartnerApiResponse.builder()
                 .id(partner.getId())
+                .name(partner.getName())
                 .status(partner.getStatus())
                 .address(partner.getAddress())
                 .callCenter(partner.getCallCenter())
