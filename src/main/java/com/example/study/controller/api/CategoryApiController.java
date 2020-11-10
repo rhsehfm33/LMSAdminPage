@@ -24,7 +24,7 @@ public class CategoryApiController implements CrudInterface<CategoryApiRequest, 
     @GetMapping("{id}")
     @Override
     public Header<CategoryApiResponse> read(@PathVariable Long id) {
-        return null;
+        return categoryApiLogicService.read(id);
     }
 
     @PutMapping("")
