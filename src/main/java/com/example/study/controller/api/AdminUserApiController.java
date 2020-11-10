@@ -18,7 +18,7 @@ public class AdminUserApiController implements CrudInterface<AdminUserApiRequest
     @PostMapping("")
     @Override
     public Header<AdminUserApiResponse> create(@RequestBody Header<AdminUserApiRequest> request) {
-        return null;
+        return adminUserApiLogicService.create(request);
     }
 
     @GetMapping("{id}")
