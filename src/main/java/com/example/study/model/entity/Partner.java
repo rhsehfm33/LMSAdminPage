@@ -21,17 +21,27 @@ import java.util.List;
 @Builder
 @Accessors(chain = true)
 public class Partner {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     private String status;
+
     private String address;
+
     private String callCenter;
+
     private String partnerNumber;
+
     private String businessNumber;
+
     private String ceoName;
+
     private LocalDateTime registeredAt;
+
     private LocalDateTime unregisteredAt;
 
     @CreatedDate

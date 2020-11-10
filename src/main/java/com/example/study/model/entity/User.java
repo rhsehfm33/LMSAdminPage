@@ -35,8 +35,11 @@ public class User {
     private UserStatus status;  // REGISTERED / UNREGISTERED / WAITING /
 
     private String email;
+
     private String phoneNumber;
+
     private LocalDateTime registeredAt;
+
     private LocalDateTime unregisteredAt;
 
     @CreatedDate
