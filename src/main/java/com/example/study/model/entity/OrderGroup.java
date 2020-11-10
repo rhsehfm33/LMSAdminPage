@@ -1,5 +1,6 @@
 package com.example.study.model.entity;
 
+import com.example.study.model.enumclass.OrderType;
 import lombok.*;
 import lombok.experimental.Accessors;
 import org.springframework.data.annotation.CreatedBy;
@@ -22,17 +23,28 @@ import java.util.List;
 @Builder
 @Accessors(chain = true)
 public class OrderGroup {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String status;
-    private String orderType;
+
+    @Enumerated(EnumType.STRING)
+    private OrderType orderType;   // 주문의 형태 - 일괄 / 개별
+
     private String revAddress;
+
     private String revName;
-    private String paymentType;
+
+    private String paymentType; // 카드 / 현금
+
     private BigDecimal totalPrice;
+
     private Integer totalQuantity;
+
     private LocalDateTime orderAt;
+
     private LocalDateTime arrivalDate;
 
     @CreatedDate
