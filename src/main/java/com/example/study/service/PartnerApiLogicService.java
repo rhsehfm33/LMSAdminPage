@@ -96,7 +96,7 @@ public class PartnerApiLogicService extends BaseService<PartnerApiRequest, Partn
                 .ceoName(partner.getCeoName())
                 .registeredAt(partner.getRegisteredAt())
                 .unregisteredAt(partner.getUnregisteredAt())
-                .categoryId(partner.getId())
+                .categoryId(partner.getCategory().getId())
                 .build();
 
         return Header.OK(body);
