@@ -55,11 +55,11 @@ public class OrderDetailApiLogicService implements CrudInterface<OrderDetailApiR
     }
 
     @Override
-    public Header delete(Long id) {
+    public Header<OrderDetailApiResponse> delete(Long id) {
         return null;
     }
 
-    public Header response(OrderDetail orderDetail) {
+    public Header<OrderDetailApiResponse> response(OrderDetail orderDetail) {
 
         OrderDetailApiResponse body = OrderDetailApiResponse.builder()
                 .id(orderDetail.getId())
