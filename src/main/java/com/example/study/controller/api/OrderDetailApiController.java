@@ -30,7 +30,7 @@ public class OrderDetailApiController implements CrudInterface<OrderDetailApiReq
     @PutMapping("")
     @Override
     public Header<OrderDetailApiResponse> update(@RequestBody Header<OrderDetailApiRequest> request) {
-        return null;
+        return orderDetailApiLogicService.update(request);
     }
 
     @DeleteMapping("{id}")
