@@ -4,16 +4,21 @@ import com.example.study.ifs.CrudInterface;
 import com.example.study.model.network.Header;
 import com.example.study.model.network.request.OrderGroupApiRequest;
 import com.example.study.model.network.response.OrderGroupApiResponse;
+import com.example.study.service.OrderGroupApiLogicService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/orderGroup")
 public class OrderGroupApiController implements CrudInterface<OrderGroupApiRequest, OrderGroupApiResponse> {
 
+    @Autowired
+    private OrderGroupApiLogicService orderGroupApiLogicService;
+
     @Override
     @PostMapping("")
     public Header<OrderGroupApiResponse> create(@RequestBody Header<OrderGroupApiRequest> request) {
-        return null;
+        return orderGroupApiLogicService.create(request);
     }
 
     @Override

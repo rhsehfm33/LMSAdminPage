@@ -10,6 +10,8 @@ import com.example.study.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class OrderGroupApiLogicService implements CrudInterface<OrderGroupApiRequest, OrderGroupApiResponse> {
 
@@ -22,7 +24,23 @@ public class OrderGroupApiLogicService implements CrudInterface<OrderGroupApiReq
     @Override
     public Header<OrderGroupApiResponse> create(Header<OrderGroupApiRequest> request) {
 
-        return null;
+        OrderGroupApiRequest body = request.getData();
+
+        OrderGroup orderGroup = OrderGroup.builder()
+                .status(body.getStatus())
+                .orderType(body.getOrderType())
+                .revAddress(body.getRevAddress())
+                .revName(body.getRevName())
+                .paymentType(body.getPaymentType())
+                .totalPrice(body.getTotalPrice())
+                .totalQuantity(body.getTotalQuantity())
+                .orderAt(LocalDateTime.now())
+                .user(userRepository.getOne(body.getUserId()))
+                .build();
+
+        OrderGroup newOrderGroup = orderGroupRepository.save(orderGroup);
+
+        return response(newOrderGroup);
     }
 
     @Override
