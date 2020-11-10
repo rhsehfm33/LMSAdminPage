@@ -30,7 +30,7 @@ public class AdminUserApiController implements CrudInterface<AdminUserApiRequest
     @PutMapping("")
     @Override
     public Header<AdminUserApiResponse> update(@RequestBody Header<AdminUserApiRequest> request) {
-        return null;
+        return adminUserApiLogicService.update(request);
     }
 
     @DeleteMapping("{id}")

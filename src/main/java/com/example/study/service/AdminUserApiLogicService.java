@@ -45,7 +45,28 @@ public class AdminUserApiLogicService implements CrudInterface<AdminUserApiReque
 
     @Override
     public Header<AdminUserApiResponse> update(Header<AdminUserApiRequest> request) {
-        return null;
+
+        AdminUserApiRequest body = request.getData();
+
+        return adminUserRepository.findById(body.getId())
+                .map(adminUser -> {
+                    adminUser
+                            .setAccount(body.getAccount())
+                            .setPassword(body.getPassword())
+                            .setStatus(body.getStatus())
+                            .setRole(body.getRole())
+                            .setLastLoginAt(body.getLastLoginAt())
+                            .setLoginFailCount(body.getLoginFailCount())
+                            .setPasswordUpdatedAt(body.getPasswordUpdatedAt())
+                            .setRegisteredAt(body.getRegisteredAt())
+                            .setUnregisteredAt(body.getUnregisteredAt())
+                            ;
+
+                    return adminUser;
+                })
+                .map(adminUser -> adminUserRepository.save(adminUser))
+                .map(this::response)
+                .orElseGet(() -> Header.ERROR("데이터 없음"));
     }
 
     @Override
