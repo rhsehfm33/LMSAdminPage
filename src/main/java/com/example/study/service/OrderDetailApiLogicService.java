@@ -25,7 +25,21 @@ public class OrderDetailApiLogicService implements CrudInterface<OrderDetailApiR
 
     @Override
     public Header<OrderDetailApiResponse> create(Header<OrderDetailApiRequest> request) {
-        return null;
+
+        OrderDetailApiRequest body = request.getData();
+
+        OrderDetail orderDetail = OrderDetail.builder()
+                .status(body.getStatus())
+                .arrivalDate(body.getArrivalDate())
+                .quantity(body.getQuantity())
+                .totalPrice(body.getTotalPrice())
+                .orderGroup(orderGroupRepository.getOne(body.getOrderGroupId()))
+                .item(itemRepository.getOne(body.getItemId()))
+                .build();
+
+        OrderDetail newOrderDetail = orderDetailRepository.save(orderDetail);
+
+        return response(newOrderDetail);
     }
 
     @Override

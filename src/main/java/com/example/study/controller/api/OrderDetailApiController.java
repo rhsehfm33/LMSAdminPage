@@ -18,7 +18,7 @@ public class OrderDetailApiController implements CrudInterface<OrderDetailApiReq
     @PostMapping("")
     @Override
     public Header<OrderDetailApiResponse> create(@RequestBody Header<OrderDetailApiRequest> request) {
-        return null;
+        return orderDetailApiLogicService.create(request);
     }
 
     @GetMapping("{id}")
