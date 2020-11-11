@@ -21,7 +21,7 @@ public abstract class CrudController<Req, Res, Entity> implements CrudInterface<
     protected BaseService<Req, Res, Entity> baseService;
 
     @GetMapping("")
-    public Header<List<Res>> search(@PageableDefault(sort = "id", direction = Sort.Direction.ASC, size = 10) Pageable pageable) {
+    public Header<List<Res>> search(@PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC) Pageable pageable) {
         log.info("{}", pageable);
         return baseService.search(pageable);
     }

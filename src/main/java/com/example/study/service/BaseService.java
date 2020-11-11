@@ -32,7 +32,7 @@ public abstract class BaseService<Req, Res, Entity> implements CrudInterface<Req
         Pagination pagination = Pagination.builder()
                 .totalPages(searchedData.getTotalPages())
                 .totalElements(searchedData.getTotalElements())
-                .currentPage(searchedData.getTotalPages())
+                .currentPage(searchedData.getNumber())
                 .currentElements(searchedData.getNumberOfElements())
                 .build();
 
