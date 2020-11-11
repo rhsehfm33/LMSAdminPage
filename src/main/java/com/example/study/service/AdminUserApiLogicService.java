@@ -74,7 +74,7 @@ public class AdminUserApiLogicService extends BaseService<AdminUserApiRequest, A
                 .orElseGet(() -> Header.ERROR("데이터 없음"));
     }
 
-    private Header<AdminUserApiResponse> response(AdminUser adminUser) {
+    protected Header<AdminUserApiResponse> response(AdminUser adminUser) {
 
         AdminUserApiResponse body = AdminUserApiResponse.builder()
                 .id(adminUser.getId())
