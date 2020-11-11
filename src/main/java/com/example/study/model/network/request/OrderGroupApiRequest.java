@@ -1,6 +1,6 @@
 package com.example.study.model.network.request;
 
-import com.example.study.model.enumclass.OrderGroupStatus;
+import com.example.study.model.enumclass.OrderStatus;
 import com.example.study.model.enumclass.OrderType;
 import com.example.study.model.enumclass.PaymentType;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ public class OrderGroupApiRequest {
 
     private Long id;
 
-    private OrderGroupStatus status;
+    private OrderStatus status;
 
     private OrderType orderType;
 
