@@ -60,7 +60,7 @@ public class CategoryApiLogicService extends BaseService<CategoryApiRequest, Cat
                 .orElseGet(() -> Header.ERROR("데이터 없음"));
     }
 
-    private Header<CategoryApiResponse> response(Category category) {
+    protected Header<CategoryApiResponse> response(Category category) {
 
         CategoryApiResponse body = CategoryApiResponse.builder()
                 .id(category.getId())

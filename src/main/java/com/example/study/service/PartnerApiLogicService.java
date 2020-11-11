@@ -83,7 +83,7 @@ public class PartnerApiLogicService extends BaseService<PartnerApiRequest, Partn
                 .orElseGet(() -> Header.ERROR("데이터 없음"));
     }
 
-    private Header<PartnerApiResponse> response(Partner partner) {
+    protected Header<PartnerApiResponse> response(Partner partner) {
 
         PartnerApiResponse body = PartnerApiResponse.builder()
                 .id(partner.getId())

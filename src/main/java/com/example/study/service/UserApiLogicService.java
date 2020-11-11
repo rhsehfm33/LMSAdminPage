@@ -88,7 +88,7 @@ public class UserApiLogicService extends BaseService<UserApiRequest, UserApiResp
         .orElseGet(()->Header.ERROR("데이터 없음"));
     }
 
-    private Header<UserApiResponse> response(User user) {
+    protected Header<UserApiResponse> response(User user) {
         // user -> userAepiResponse
 
         UserApiResponse userApiResponse = UserApiResponse.builder()
@@ -105,4 +105,5 @@ public class UserApiLogicService extends BaseService<UserApiRequest, UserApiResp
         // return Header + data
         return Header.OK(userApiResponse);
     }
+
 }
