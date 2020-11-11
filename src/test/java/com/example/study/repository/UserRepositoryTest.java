@@ -3,6 +3,7 @@ package com.example.study.repository;
 
 import com.example.study.StudyApplicationTests;
 import com.example.study.model.entity.User;
+import com.example.study.model.enumclass.UserStatus;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class UserRepositoryTest extends StudyApplicationTests {
     public void create() {
         String account = "Test03";
         String password = "Test03";
-        String status = "REGISTERED";
+        UserStatus status = UserStatus.REGISTERED;
         String email = "Test01@gmail.com";
         String phoneNumber = "010-1111-3333";
         // LocalDateTime registeredAt = LocalDateTime.now();
@@ -51,11 +52,6 @@ public class UserRepositoryTest extends StudyApplicationTests {
     public void read() {
         User user = userRepository.findFirstByPhoneNumberOrderByIdDesc("010-1111-2222");
 
-        // chain pattern
-        user
-                .setEmail("")
-                .setPhoneNumber("")
-                .setStatus("");
         User u = new User().setAccount("").setEmail("").setPassword("");
         if (user != null) {
             user.getOrderGroupList().stream().forEach(orderGroup -> {

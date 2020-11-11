@@ -15,6 +15,7 @@ public class CategoryRepositoryTest extends StudyApplicationTests {
 
     @Test
     public void create() {
+        System.out.println(categoryRepository);
         String type = "COMPUTER";
         String title = "컴퓨터";
         LocalDateTime createdAt = LocalDateTime.now();
@@ -23,8 +24,6 @@ public class CategoryRepositoryTest extends StudyApplicationTests {
         Category category = new Category();
         category.setType(type);
         category.setTitle(title);
-        category.setCreatedAt(createdAt);
-        category.setCreatedBy(createdBy);
 
         Category newCategory = categoryRepository.save(category);
 
